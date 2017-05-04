@@ -7,7 +7,7 @@ import argparse
 def print_json(files):
 	samples = {}
 	for line in fileinput.input(files=files):
-		m = re.search(r"P\d{4}_\d{3}", line)
+		m = re.search(r"P\d{3,}_\d{3,}", line)
 		if m:
 			s = m.group()
 		else:
@@ -21,7 +21,7 @@ def print_json(files):
 def print_csv(files):
 	samples = {}
 	for line in fileinput.input(files=files):
-		m = re.search(r"P\d{4}_\d{3}", line)
+		m = re.search(r"P\d{3,}_\d{3,}", line)
 		if m:
 			samples.setdefault("SAMPLE", []).append(m.group())
 		else:
